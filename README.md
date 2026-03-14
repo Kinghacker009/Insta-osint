@@ -13,7 +13,7 @@ Simple Python tool to get public Instagram user information.
 
 ## Installation
 
-git clone https://github.com/yourusername/instagram-info-tool
+git clone https://github.com/Kinghacker009/instagram-info-tool
 cd instagram-info-tool
 
 pip install requests
