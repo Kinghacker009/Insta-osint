@@ -1,0 +1,5 @@
+instagram-info-tool
+│
+├── insta_info.py
+├── README.md
+└── requirements.txt
