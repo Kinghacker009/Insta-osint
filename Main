@@ -1,0 +1,37 @@
+import requests
+import json
+
+def get_instagram_info(username):
+    url = f"https://www.instagram.com/{username}/?__a=1&__d=dis"
+
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        data = response.json()
+
+        user = data["graphql"]["user"]
+
+        info = {
+            "Username": user["username"],
+            "Full Name": user["full_name"],
+            "Bio": user["biography"],
+            "Followers": user["edge_followed_by"]["count"],
+            "Following": user["edge_follow"]["count"],
+            "Posts": user["edge_owner_to_timeline_media"]["count"],
+            "Private Account": user["is_private"],
+            "Verified": user["is_verified"]
+        }
+
+        print("\nInstagram User Info\n")
+        for key, value in info.items():
+            print(f"{key}: {value}")
+
+    except Exception as e:
+        print("Error:", e)
+
+if __name__ == "__main__":
+    username = input("Enter Instagram Username: ")
+    get_instagram_info(username)
